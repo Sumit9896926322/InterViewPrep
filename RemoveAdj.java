@@ -1,7 +1,9 @@
-import java.util.*;
+package GFG;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
-
-
+public class RemoveAdj {
 static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 public static int nextInt() throws IOException {return Integer.parseInt(br.readLine());}
@@ -29,4 +31,6 @@ public static void main(String[] args) throws IOException {
 		
 		
 	}
+}
+
 }
