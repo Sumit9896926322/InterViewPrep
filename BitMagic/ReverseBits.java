@@ -1,9 +1,9 @@
-package BitMagic;
+package GFG.BitMagic;
 
 import java.io.*;
 import java.util.*;
 
-public class Kpower2 {
+public class ReverseBits {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -28,18 +28,24 @@ public class Kpower2 {
 		return br.readLine();
 	}
 
-	public static void main(String[] args) throws IOException {
+public static void main(String[] args) throws IOException {
 
-		int T = nextInt();
-		while (T-- > 0) {
+	int T = nextInt();
+	while (T-- > 0) {
 
-			int n = nextInt();
-			// We can take log2 as well
-			// We can also n & n-1
-			System.out.println((int) Math.log(10) / Math.log(8));
-			System.out.println((n & (2 * n - 1)) == n ? "YES" : "NO");
-
+		int n = nextInt();
+			int count = 0;
+			long ans = 0;
+		while(n>0) {
+				count++;
+				if ((n & 1) == 1)
+					ans += Math.pow(2, 32 - count);
+				
+			n = n >> 1;
 		}
+			System.out.println(ans);
+
 	}
+}
 
 }

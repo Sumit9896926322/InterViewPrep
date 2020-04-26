@@ -1,9 +1,9 @@
-package BitMagic;
+package GFG.BitMagic;
 
 import java.io.*;
 import java.util.*;
 
-public class Kpower2 {
+public class powerof8 {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -34,10 +34,12 @@ public class Kpower2 {
 		while (T-- > 0) {
 
 			int n = nextInt();
-			// We can take log2 as well
-			// We can also n & n-1
-			System.out.println((int) Math.log(10) / Math.log(8));
-			System.out.println((n & (2 * n - 1)) == n ? "YES" : "NO");
+
+			if ((n & 2 * n - 1) == n && ((int) (Math.log10(n) / Math.log10(2)) % 3 == 0)) {
+				System.out.println("Yes");
+			} else {
+				System.out.println("No");
+			}
 
 		}
 	}

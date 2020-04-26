@@ -1,9 +1,9 @@
-package BitMagic;
+package GFG.BitMagic;
 
 import java.io.*;
 import java.util.*;
 
-public class Kpower2 {
+public class Divisibleby3 {
 
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -30,15 +30,20 @@ public class Kpower2 {
 
 	public static void main(String[] args) throws IOException {
 
+
 		int T = nextInt();
 		while (T-- > 0) {
 
 			int n = nextInt();
-			// We can take log2 as well
-			// We can also n & n-1
-			System.out.println((int) Math.log(10) / Math.log(8));
-			System.out.println((n & (2 * n - 1)) == n ? "YES" : "NO");
-
+			int count = 0;
+			int sum = 0;
+			while (n > 0) {
+				n = (n & (n - 1));
+				sum += Math.pow(2, count);
+				count++;
+			}
+			System.out.println(sum);
+			System.out.println(sum % 3 == 0 ? 1 : 0);
 		}
 	}
 
