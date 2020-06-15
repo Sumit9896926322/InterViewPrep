@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="GFG/|GFG/Math &amp; array/" kind="src" path=""/>
+	<classpathentry excluding="Math &amp; array/" kind="src" path="GFG"/>
+	<classpathentry kind="src" path="GFG/Math &amp; array"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

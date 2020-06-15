@@ -19,7 +19,7 @@ class LinkedList {
     	}
     }
     
-    public static void print() {
+	public static void print(Node head) {
     	 Node n = head;
   	     while(n != null) {
   		   System.out.print(n.data+" ");
@@ -51,7 +51,7 @@ class LinkedList {
 			prev.next = temp;
 			prev = temp;
 		}
-		print();
+		print(head);
 		return head;
 	}
 
@@ -130,7 +130,7 @@ class LinkedList {
 				temp = temp.next;
 
 		}
-		print();
+		print(head);
 		return head;
 	}
 
@@ -164,7 +164,7 @@ class LinkedList {
 			prev = temp;
 			temp = temp.next;
 		}
-		print();
+		print(head);
 	}
 
 	public static int detectLoop(Node head) {
@@ -219,7 +219,7 @@ class LinkedList {
 
 		}
 		head = prev;
-		print();
+		print(head);
 	}
 
 	public static void recurRev1() {
@@ -279,7 +279,7 @@ class LinkedList {
 			temp = temp.next;
 		}
 		head = breakNode;
-		print();
+		print(head);
 	}
 
 	public static void removeLoop(Node head) {
@@ -289,18 +289,21 @@ class LinkedList {
 		while (slow != null && fast.next != null) {
 			slow = slow.next;
 			fast = fast.next.next;
-			if (slow == fast) {
-				slow = head;
-				fast = fast.next;
-				while (slow != fast) {
-					slow = slow.next;
-					fast = fast.next;
-
-					if (slow == fast)
-						System.out.println(slow.data);
-				}
-			}
+			if (slow == fast)
+				break;
 		}
+		if (slow != fast)
+			return;
+		Node temp = head;
+		Node last = fast;
+		while (temp != fast) {
+
+			temp = temp.next;
+			last = fast;
+			fast = fast.next;
+		}
+		System.out.println(last.data + "l");
+		last.next = null;
 	}
 
 	public static void makeLoop(Node head, int num) {
@@ -335,6 +338,52 @@ class LinkedList {
 		return slow.data;
 	}
 
+	public static void segregateOddEven(Node head) {
+
+		Node temp = head;
+		Node even = null;
+		Node odd = null;
+
+		Node oddhead = null;
+		if (temp.next == null) {
+			print(head);
+			return;
+		}
+		while (temp != null) {
+			if (temp.data % 2 == 0) {
+
+				if (even == null)
+					head = even = temp;
+				else {
+					even.next = temp;
+					even = temp;
+				}
+
+			} else {
+
+				if (odd == null)
+					oddhead = odd = temp;
+				else {
+					odd.next = temp;
+					odd = temp;
+				}
+
+			}
+
+			temp = temp.next;
+		}
+		if (even == null || odd == null) {
+			// If no odd or no even node appers
+			print(head);
+			return;
+		}
+		// even pointing to first odd node
+		even.next = oddhead;
+		odd.next = null;
+
+		print(head);
+	}
+
 	public static void main(String[] args) {
 		
 		Scanner s = new Scanner(System.in);
@@ -348,14 +397,8 @@ class LinkedList {
 
 			for (int i = 0; i < n; i++)
 				insertAfter(s.nextInt());
-            
-			//For reversing in groups
-			int k = s.nextInt();
-			makeLoop(head, k);
-			removeLoop();
-			print();
 
-
+			segregateOddEven(head);
 		}
 	}
 
