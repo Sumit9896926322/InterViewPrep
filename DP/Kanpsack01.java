@@ -1,5 +1,3 @@
-package DP;
-
 import java.io.*;
 import java.util.*;
 
@@ -28,6 +26,33 @@ public class Kanpsack01 {
 		return br.readLine();
 	}
 
+	public static int knapsackDp(int val[], int w[], int W) {
+		int n = val.length;
+		int dp[][] = new int[n + 1][W + 1];
+
+		// Filling first column to 0
+		for (int i = 0; i < dp.length; i++)
+			dp[i][0] = 0;
+
+		// Filling first row to 0
+		for (int i = 1; i < dp[0].length; i++)
+			dp[0][i] = 0;
+
+		for (int i = 1; i < dp.length; i++) {
+			for (int j = 1; j < dp[i].length; j++) {
+
+				// if we can't add more item then
+				if (j < w[i - 1])
+					dp[i][j] = dp[i - 1][j];
+				else
+					dp[i][j] = Math.max(dp[i - 1][j], val[i - 1] + dp[i - 1][j - w[i - 1]]);
+
+			}
+		}
+
+		return dp[n][W];
+	}
+
 	public static int knapsack(int val[], int w[], int W, int curr, int i) {
 
 		if (i >= val.length || W - w[i] < 0)
@@ -41,11 +66,13 @@ public class Kanpsack01 {
 		int T = nextInt();
 		while (T-- > 0) {
 
+			int n = nextInt();
+			int W = nextInt();
 			int val[] = nextArr();
 			int w[] = nextArr();
-			int W = nextInt();
 
-			int ans = knapsack(val, w, W, 0, 0);
+
+			int ans = knapsackDp(val, w, W);
 
 			System.out.println(ans);
 
