@@ -1,5 +1,4 @@
 package LinkedList;
-
 import java.util.*;
 
 class LinkedList {
@@ -10,6 +9,7 @@ class LinkedList {
     static class Node{
     	int data;
     	Node next;
+		Node prev;
     	
 
     	Node(int d){
@@ -27,7 +27,16 @@ class LinkedList {
   	   }	
   	 System.out.println();   
     }
-    
+
+	public static void removeDuplicates(Node head) {
+		Node temp = head;
+		while (temp != null) {
+			System.out.println(temp.data);
+			while (temp != null && temp.data == temp.next.data) {
+				temp = temp.next;
+			}
+		}
+	}
 	public static Node remove(Node root) {
 		// Remove Duplicates in sorted ll
 		Node head = root;
@@ -384,6 +393,18 @@ class LinkedList {
 		print(head);
 	}
 
+	public static void makeCircular(Node start) {
+
+		Node temp = start;
+		int length = 0;
+		while (temp.next != null) {
+			temp.next.prev = temp;
+			temp = temp.next;
+		}
+		head = temp;
+		System.out.println(head.data + "head");
+
+	}
 	public static void main(String[] args) {
 		
 		Scanner s = new Scanner(System.in);
@@ -398,7 +419,17 @@ class LinkedList {
 			for (int i = 0; i < n; i++)
 				insertAfter(s.nextInt());
 
-			segregateOddEven(head);
+			int repeat = s.nextInt();
+			makeCircular(head);
+			for (int i = 0; i < repeat; i++) {
+				Node temp = head;
+				while (temp != null) {
+					System.out.print(temp.data + " ");
+					temp = temp.prev;
+				}
+			}
+
+
 		}
 	}
 
