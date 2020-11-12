@@ -1,16 +1,16 @@
-package GFG.Tree;
+package Tree;
 
 public class Node {
-	int data;
-	Node left, right;
+	public int data;
+	public Node left, right;
 
-	Node(int item) {
+	public Node(int item) {
 		data = item;
 		left = null;
 		right = null;
 	}
 
 	public static void main(String[] args) {
-
+		Node root = new Node(10);
 	}
 }
