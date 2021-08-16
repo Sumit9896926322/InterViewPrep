@@ -1,0 +1,46 @@
+package recursion;
+import java.util.*;
+
+public class sortStack {
+   
+	static Stack<Integer> st = new Stack<Integer>();
+	
+	public static void sortRecursive(Stack<Integer> st) {
+		
+		if(st.size() == 1) 
+			return;
+		int temp = st.pop();
+		sortRecursive(st);	
+		
+		if(temp < st.peek()) {
+			Stack<Integer> st2 = new Stack<Integer>();
+			while(!st.isEmpty()) {
+				st2.push(st.pop());
+			}
+			st.push(temp);
+			while(!st2.isEmpty()) {
+				st.push(st2.pop());
+			}	
+		}
+	}
+	
+	public static void main(String[] args) {
+	
+		Scanner s = new Scanner(System.in);
+		
+		int t = 1;
+		t = s.nextInt();
+		
+		while(t-- > 0) {
+			int n = s.nextInt();
+			
+		for (int i = 0; i < n; i++) 
+			st.push(s.nextInt());
+		
+			sortRecursive(st);
+			
+	
+			System.out.println(st);
+		}
+  }
+}
