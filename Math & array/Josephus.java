@@ -45,16 +45,16 @@ public class Josephus {
 			System.out.println(Math.abs(Math.min(res, 360 - res)));
          
 			
-			private static void swap(char[] ch, int i, int j)
-			{
-				
-			}
-
-			// Recursive function to generate all permutations of a String
-			private static void permutations(char[] ch, int currentIndex)
-			{
-				
-			}
+//			private static void swap(char[] ch, int i, int j)
+//			{
+//
+//			}
+//
+//			// Recursive function to generate all permutations of a String
+//			private static void permutations(char[] ch, int currentIndex)
+//			{
+//
+//			}
 		}
 	}
 

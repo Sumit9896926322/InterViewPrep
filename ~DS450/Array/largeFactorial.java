@@ -1,4 +1,4 @@
-package DS450.array;
+package array;
 
 import java.util.*;
 
