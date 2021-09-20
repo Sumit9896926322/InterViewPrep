@@ -4,5 +4,6 @@ metadata/
  .project
  settings/
  bin/
-out/*
+**/out
+**/.idea
 .idea
