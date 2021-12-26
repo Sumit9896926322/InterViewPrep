@@ -4,7 +4,7 @@ import java.util.*;
 public class getStairPaths {
     public static ArrayList<String> getStairPath(int n){
         if(n == 0){
-            ArrayList<String> temp = new ArrayList<String>();
+            ArrayList<String> temp = new ArrayList<String>();//there is one way to reach nth ladder to nth ladder is not move at all i.e we are adding "" in temp arrayList.
             temp.add("");
             return temp;
         }else if(n<0){

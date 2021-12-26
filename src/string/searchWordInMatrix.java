@@ -28,12 +28,9 @@ public class searchWordInMatrix {
         String s = sc.next();
 
         String mat[][] ={
-                {"D","D","D","G","D","D"},
-                {"B","B","D","E","B","S"},
-                {"B","S","K","E","B","K"},
-                {"D","D","D","D","D","E"},
-                {"D","D","D","D","D","E"},
-                {"D","D","D","D","D","G"}
+                {"a","b","c"},
+                {"d","e","f"},
+                {"g","h","a"},
         };
         int m = mat.length;
         int n = mat[0].length;
