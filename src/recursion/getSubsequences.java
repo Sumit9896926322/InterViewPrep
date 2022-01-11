@@ -23,6 +23,6 @@ public class getSubsequences {
  
     public static void main(String[] args) {
         System.out.println(getSubsequence("abc"));
-        System.out.println("abc".split(""));
+
     }
 }
