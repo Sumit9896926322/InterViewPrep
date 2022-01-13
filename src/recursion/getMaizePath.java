@@ -11,6 +11,7 @@ public class getMaizePath {
             ArrayList<String> temp = new ArrayList<String>();
             temp.add("");//there is one way to reach (dr,dc) to (dr,dc) is not move at all i.e we are adding "" in temp arrayList.
             return temp;
+            
         }
         ArrayList<String> pathV = getMaizePath(sr+1,sc,dr,dc);
         ArrayList<String> pathH = getMaizePath(sr,sc+1,dr,dc);
