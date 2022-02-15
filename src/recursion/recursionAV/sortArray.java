@@ -12,16 +12,12 @@ public class sortArray {
 		sortRecursive(arr,n-1);
 		
 		int temp = arr[n];
-		int tempi=-1;
-		for(int i = n-1;i>=0;i--) {
-			if(arr[i]>temp)
-				arr[i+1] = arr[i];
-			else {
-				tempi = i;
-				break;
-			}
+		int i = n-1;
+		while(i>=0 && arr[i]>temp){
+			arr[i+1] = arr[i];
+			i--;
 		}
-		arr[tempi+1] = temp;
+		arr[i+1] = temp;
 	}
 	
 	public static void main(String[] args) {

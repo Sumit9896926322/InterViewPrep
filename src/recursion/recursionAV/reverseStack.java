@@ -1,6 +1,7 @@
 package recursion.recursionAV;
 import java.util.*;
 
+
 public class reverseStack {
    
 	static Stack<Integer> st = new Stack<Integer>();
@@ -12,7 +13,7 @@ public class reverseStack {
 			return st;
 		}
 		int tempr = st.pop();
-		pushAtBottom(st,temp);	
+		pushAtBottom(st,temp);
 		st.push(tempr);
 		
 		return st;
@@ -26,7 +27,7 @@ public class reverseStack {
 		int temp = st.pop();
 		reverse(st);	
 		
-			pushAtBottom(st,temp);
+		pushAtBottom(st,temp);
 		
 		return st;
 	}
