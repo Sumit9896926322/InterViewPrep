@@ -1,5 +1,7 @@
 package misc;
 
+import java.util.Stack;
+
 public class random {
 //    public static boolean pallinDrome(String str){
 //        for(int i= 0;i<str.length()/2;i++){
@@ -43,9 +45,61 @@ public class random {
 //        }
 //        return ans;
 //    }
+    public static int longestStr(String s){
+        int low = 0;
+        int high = 0;
+        int n = s.length();
+        String temp = "";
+        int ans = 0;
+      //charAt =  charcter
+       // "abc".charAt(0) = "a"
+        //contains  = boolean
+        while(high<n){
+            if(!temp.contains(s.charAt(high)+"") ){
+                temp+=s.charAt(high);
+                high++;
+            }
+            else{
+                while(temp.contains(s.charAt(high)+"")){
+                    temp = temp.substring(1,temp.length());
+                    low++;
+                }
+            }
+            ans = Math.max(ans,high-low);
+        }
+        return ans;
+    }
+
+    public static Boolean matchingBrackets(String s){
+        Stack<Character> st = new Stack<Character>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char elem = s.charAt(i);
+            if(elem == '{' || elem == '(' || elem == '['){
+                st.push(elem);
+            }else{
+                if(!st.empty()){
+                    if(elem == '}' && st.peek() == '{'){
+                        st.pop();
+                    }else if(elem == ')' && st.peek() =='('){
+                        st.pop();
+                    }else if(elem == ']' && st.peek() =='['){
+                        st.pop();
+                    }else{
+                        return false;
+                    }
+                }else{
+                    return false;
+                }
+
+            }
+        }
+
+        return false;
+    }
     public static void main(String[] args) {
-        String s1 = "aba";
+        String s1 = "{()[]{}}";
         String s2 = "acb";
-//        System.out.println( flavours(4,3));
+      System.out.println( matchingBrackets(s1));
     }
 }
