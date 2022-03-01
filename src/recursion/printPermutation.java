@@ -1,24 +1,20 @@
 package recursion;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class printPermutation {
-    public static void printPermutation(String str,String curr){
-        if(str.length() == 0){
-            System.out.println(curr);
-            return;
-        }
-        for(int i = 0;i<str.length();i++){
-            char temp = str.charAt(i);
-            String res = str.substring(0,i)+str.substring(i+1,str.length());
-            printPermutation(res,curr+temp);
-        }
 
-    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String str = sc.next();
-        printPermutation(str,"");
+        int  n = sc.nextInt();
+        int arr[] = new int[n];
+        int ans = 0;
+        for (int i = 0; i <n ; i++) {
+            arr[i] = sc.nextInt();
+        }
+        Arrays.sort(arr);
+        int half = (arr.length - 1)/2;
+        System.out.println(arr[half]+arr[half+1]);
     }
 
 }
