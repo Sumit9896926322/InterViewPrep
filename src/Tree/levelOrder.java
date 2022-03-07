@@ -82,6 +82,11 @@ public class levelOrder {
         int arr[] = {1,2,3,4,5,6,7,8,9};
         Node root = Tree.makeTree(arr);
     //        levelOrderRecursive(root);
+        Stack<Integer> st = new Stack<Integer>();
+        for(int i = 1;i<=5;i++){
+            st.push(i);
+        }
+
         zigZag(root);
     }
 }

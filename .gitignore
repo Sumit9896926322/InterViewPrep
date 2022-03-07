@@ -1,1 +1,9 @@
-out/
+/bin/
+metadata/
+.classpath
+ .project
+ settings/
+ bin/
+**/out
+**/.idea
+.idea

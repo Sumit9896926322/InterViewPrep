@@ -46,7 +46,14 @@ public class Tree {
 
 		return 1+Math.max(lh,rh);
 	}
-
+	public static void inOrder(Node root){
+		if(root == null){
+			return;
+		}
+		System.out.println(root.data);
+		inOrder(root.left);
+		inOrder(root.right);
+	}
 	public static void main(String[] args) {
 
 	}
