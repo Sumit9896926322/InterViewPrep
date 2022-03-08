@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Tree {
-	static Node root = null;
+	public static Node root = null;
 
 	public static Node makeTree(int arr[]) {
 		Queue<Node> q = new LinkedList<Node>();

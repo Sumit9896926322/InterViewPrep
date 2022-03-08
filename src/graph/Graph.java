@@ -1,49 +1,45 @@
-package misc;
+package graph;
 
 import java.util.*;
 
 public class Graph {
     static ArrayList<ArrayList<Integer>> adjList = new ArrayList<ArrayList<Integer>>();
+    static boolean []visited;
     public static void bfs(int v){
         if(adjList.size() == 0)
             return;
         Queue<Integer> queue = new LinkedList<Integer>();
-        queue.add(0);
-        Boolean visited[] = new Boolean[v-1];
+        queue.add(v);
+        visited[v] = true;
         while(!queue.isEmpty()){
                int vertex = queue.poll();
-               System.out.println(vertex);
-
+                System.out.println(vertex);
                for(int a:adjList.get(vertex)){
                    if(!visited[a]) {
                        queue.add(a);
-                       visited[vertex] = true;
+                       visited[a] = true;
                    }
                }
         }
 
     }
     // Function to return a list containing the DFS traversal of the graph.
-    public static ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj,Boolean visited[],ArrayList<Integer> ans,int i) {
+    public static void dfs(int i) {
         // Code here
-
-        ArrayList<Integer> adjacent = adj.get(i);
+        visited[i] = true;
+        System.out.println(i);
+        ArrayList<Integer> adjacent = adjList.get(i);
         for(int j:adjacent){
             if(!visited[j]){
-                ans.add(j);
-                dfs(adj,visited,ans,j);
+                dfs(j);
             }
         }
-        return ans;
     }
-
-    public static void main(String[] args) {
+    public static ArrayList<ArrayList<Integer>> init(int v,int e){
         Scanner s = new Scanner(System.in);
-        int v = s.nextInt();
-        int e = s.nextInt();
 
 
-        for (int i = 0; i <= v; i++) {
+        for (int i = 0; i < v; i++) {
             adjList.add(new ArrayList<Integer>());
         }
 
@@ -52,21 +48,26 @@ public class Graph {
             int src  = s.nextInt();
             int dest = s.nextInt();
 
+            //in case of undirected graph adding edges to both node
             adjList.get(src).add(dest);
             adjList.get(dest).add(src);
         }
+        return adjList;
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int v = s.nextInt();
+        int e = s.nextInt();
+        adjList = init(v,e);
+        visited = new boolean[v];
+        for(int i = 0;i<v;i++){
+            if(!visited[i]){
+             //   bfs(i);
 
-//        for (int i = 1;i<adjList.size();i++) {
-//            System.out.print(i+" -> ");
-//            ArrayList<Integer> neighbour = adjList.get(i);
-//            for (int nodes : neighbour)
-//                System.out.print(nodes + " ");
-//            System.out.println();
-//        }
-
-//        bfs(v);
-        Boolean visited[] = new Boolean[v+1];
+                dfs(i);
+            }
+        }
         ArrayList<Integer> ans = new ArrayList<Integer>();
-         dfs(adjList,visited,ans,0);
+//         dfs(adjList,visited,ans,0);
     }
 }
