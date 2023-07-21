@@ -32,14 +32,14 @@ public class LPS {
 			System.out.println(arr[i]);
 	}
 
-	public static int[] kmp(String s) {
-		int lps[] = new int[s.length()];
-		lps[0] = 0;
-
-		for (int i = 1; i < lps.length; i++) {
-
-		}
-	}
+//	public static int[] kmp(String s) {
+//		int lps[] = new int[s.length()];
+//		lps[0] = 0;
+//
+//		for (int i = 1; i < lps.length; i++) {
+//
+//		}
+//	}
 
 	public static void main(String[] args) throws IOException {
 
@@ -48,7 +48,7 @@ public class LPS {
 		while (T-- > 0) {
 
 			String s = next();
-			kmp(s);
+//			kmp(s);
 
 		}
 	}

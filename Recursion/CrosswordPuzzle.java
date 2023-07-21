@@ -33,7 +33,6 @@ public class CrosswordPuzzle {
 	}
 
 	public static void main(String[] args) throws IOException {
-
 		int T = 1;
 		T = nextInt();
 		while (T-- > 0) {

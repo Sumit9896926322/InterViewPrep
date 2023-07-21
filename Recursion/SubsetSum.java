@@ -41,8 +41,6 @@ public class SubsetSum {
 				ans++;
 			return;
 		}
-
-
 		subsetSum(arr, subsum, i + 1, k);
 		subsetSum(arr, subsum += arr[i], i + 1, k);
 	}

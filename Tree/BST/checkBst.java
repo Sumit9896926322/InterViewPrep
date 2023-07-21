@@ -34,7 +34,7 @@ public class checkBst {
 	}
 
 	public static int checkBst(Node root, String child) {
-
+		return 1;
 	}
 
 	public static void main(String[] args) throws IOException {
