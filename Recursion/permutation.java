@@ -5,63 +5,74 @@ import java.util.*;
 
 public class permutation {
 
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	public static int nextInt() throws IOException {
-		return Integer.parseInt(br.readLine());
-	}
+    public static int nextInt() throws IOException {
+        return Integer.parseInt(br.readLine());
+    }
 
-	public static long nextLong() throws IOException {
-		return Long.parseLong(br.readLine());
-	}
+    public static long nextLong() throws IOException {
+        return Long.parseLong(br.readLine());
+    }
 
-	public static String next() throws IOException {
-		return br.readLine();
-	}
+    public static String next() throws IOException {
+        return br.readLine();
+    }
 
-	public static int[] nextArr() throws IOException {
-		String elements[] = br.readLine().split(" ");
-		int arr[] = new int[elements.length];
-		for (int j = 0; j < elements.length; j++)
-			arr[j] = Integer.parseInt(elements[j]);
-		return arr;
-	}
+    public static int[] nextArr() throws IOException {
+        String elements[] = br.readLine().split(" ");
+        int arr[] = new int[elements.length];
+        for (int j = 0; j < elements.length; j++)
+            arr[j] = Integer.parseInt(elements[j]);
+        return arr;
+    }
 
-	public static void printArr(int arr[]) {
-		for (int i = 0; i < arr.length; i++)
-			System.out.println(arr[i]);
-	}
+    public static void printArr(int arr[]) {
+        for (int i = 0; i < arr.length; i++)
+            System.out.println(arr[i]);
+    }
 
-	public static String swap(String s, int i, int j) {
-		char arr[] = s.toCharArray();
-		char temp = arr[i];
-		arr[i] = arr[j];
-		arr[j] = temp;
+    public static String swap(String s, int i, int j) {
+        char arr[] = s.toCharArray();
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
 
-		return new String(arr);
-	}
+        return new String(arr);
+    }
 
-	public static void permutation(String s, int i, int j) {
+    public static void permutation(String p, String up) {
+        if (p.equals("")) {
+            System.out.println(up);
+            return;
+        }
+        for (int i = 0; i < p.length(); i++) {
+            String left = p.substring(0, i);
+            String right = p.substring(i+1);
+            permutation(left + right, up + p.charAt(i));
+        }
 
-		if (j == s.length()) {
-			System.out.println(s);
-			return;
-		}
-		s = swap(s, i, j);
-		permutation(s, i, j + 1);
-		permutation(s, i + 1, j);
-	}
+    }
 
-	public static void main(String[] args) throws IOException {
+    public static void permutationForLoop(String s, int i) {
+        if (i == s.length()) {
+            System.out.println(s);
+            return;
+        }
+        for (int j = i; j < s.length(); j++) {
+            s = swap(s, i, j);
+            permutationForLoop(s, i + 1);
+        }
+    }
 
-		int T = 1;
-		T = nextInt();
-		while (T-- > 0) {
+    public static void main(String[] args) throws IOException {
+        int T = 1;
+        while (T-- > 0) {
 
-			String s = next();
-			permutation(s, 0, 0);
+            String s = next();
+            permutationForLoop("abc", 0);
 
-		}
-	}
+        }
+    }
 
 }

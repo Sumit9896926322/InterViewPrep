@@ -3,44 +3,37 @@ import java.util.List;
 
 public class test {
 
-    public static String calculateReviewScore(String review, List<String> lowerCaseProhibitedWords) {
-        review = review.toLowerCase();
 
-        String longSubstring = "";
-        String currentSubstring = "";
-        int currentSubstringStart = 0;
-
-        for (int i = 0; i < review.length(); i++) {
-            currentSubstring += review.charAt(i);
-            while (containsProhibitedWord(currentSubstring, lowerCaseProhibitedWords)) {
-                currentSubstringStart++;
-                currentSubstring = review.substring(currentSubstringStart, i + 1);
-            }
-
-            if (currentSubstring.length() > longSubstring.length()) {
-                longSubstring = currentSubstring;
+    public static boolean findOddDivisor(int n) {
+        int divisorCount = 0;
+        int maxDivisorUpto = (int) Math.sqrt(n);
+        for (int i = 1; i <= maxDivisorUpto; i++) {
+            if (n % i == 0) {
+                divisorCount++;
             }
         }
-
-        return longSubstring;
+        return (divisorCount * 2) % 2 != 0;
     }
 
-    private static boolean containsProhibitedWord(String substring, List<String> prohibitedWords) {
-        for (String word : prohibitedWords) {
-            if (substring.contains(word)) {
-                return true;
+    public static long oddProducts(int n, int[] arr) {
+        long ans = 0;
+
+        for (int i = 0; i < n; i++) {
+            int num = 1;
+            for (int j = i; j < n; j++) {
+                num *= arr[j];
+                if (findOddDivisor(num)) {
+                    ans += 1;
+                }
             }
         }
-        return false;
+        return ans;
     }
 
     public static void main(String[] args) {
-        String review = "GoodProductButScrapAfterWash";
-        List<String> prohibitedWords = new ArrayList<>();
-        prohibitedWords.add("crap");
-        prohibitedWords.add("odpro");
-
-        String longestSubstring = calculateReviewScore(review, prohibitedWords);
-        System.out.println(longestSubstring); // Output: "dProductButScra"
+        int arr[] = {1, 2};
+        int n = 4;
+        long ans = oddProducts(n,arr);
+        System.out.println(ans);
     }
 }

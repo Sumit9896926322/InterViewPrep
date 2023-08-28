@@ -13,19 +13,11 @@ public class QuickSort {
     }
 
     public static int partition(int[] arr, int low, int high) {
-        int pivot = arr[high];
-        int i = low;
-        int j = high;
+        int i = low, j = high, pivot = arr[high];
         while (i < j) {
-            while (arr[i] < pivot) {
-                i++;
-            }
-            while (arr[j] >= pivot) {
-                j--;
-            }
-            if (i < j) {
-                swap(arr, i, j);
-            }
+            while (i <= arr.length - 1 && arr[i] < pivot) i++;
+            while (j >= 0 && arr[j] >= pivot) j--;
+            if (i < j) swap(arr, i, j);
         }
         swap(arr, i, high);
         return i;

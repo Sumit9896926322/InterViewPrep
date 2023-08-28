@@ -5,54 +5,68 @@ import java.util.*;
 
 public class Subsets {
 
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	public static int nextInt() throws IOException {
-		return Integer.parseInt(br.readLine());
-	}
+    public static int nextInt() throws IOException {
+        return Integer.parseInt(br.readLine());
+    }
 
-	public static long nextLong() throws IOException {
-		return Long.parseLong(br.readLine());
-	}
+    public static long nextLong() throws IOException {
+        return Long.parseLong(br.readLine());
+    }
 
-	public static String next() throws IOException {
-		return br.readLine();
-	}
+    public static String next() throws IOException {
+        return br.readLine();
+    }
 
-	public static int[] nextArr() throws IOException {
-		String elements[] = br.readLine().split(" ");
-		int arr[] = new int[elements.length];
-		for (int j = 0; j < elements.length; j++)
-			arr[j] = Integer.parseInt(elements[j]);
-		return arr;
-	}
+    public static int[] nextArr() throws IOException {
+        String elements[] = br.readLine().split(" ");
+        int arr[] = new int[elements.length];
+        for (int j = 0; j < elements.length; j++)
+            arr[j] = Integer.parseInt(elements[j]);
+        return arr;
+    }
 
-	public static void printArr(int arr[]) {
-		for (int i = 0; i < arr.length; i++)
-			System.out.println(arr[i]);
-	}
+    public static void printArr(int arr[]) {
+        for (int i = 0; i < arr.length; i++)
+            System.out.println(arr[i]);
+    }
 
-	public static void permutation(String s, String curr, int i) {
+    public static void iterativeSubsets(String s) {
+        ArrayList<ArrayList<String>> ans = new ArrayList<ArrayList<String>>();
+        ArrayList<String> initial = new ArrayList<String>();
+        initial.add("");
 
-		if (i >= s.length()) {
-			System.out.println(curr);
-			return;
-		}
+        ans.add(initial);
 
-		permutation(s, curr, i + 1);
-		permutation(s, curr + s.charAt(i), i + 1);
-	}
+        for (int i = 0; i < s.length(); i++) {
+            ArrayList<ArrayList<String>> temp = ans;
+            int n = temp.size();
 
-	public static void main(String[] args) throws IOException {
+            for (int j = 0; j < n ;j++) {
+                ArrayList<String> include = new ArrayList<String>();
+                include.add(temp.get(j).get(0) + s.charAt(i));
+                ans.add(include);
+            }
+        }
+        System.out.println(ans.toString());
 
-		int T = 1;
-		T = nextInt();
-		while (T-- > 0) {
+    }
 
-			String s = next();
-			permutation(s, "", 0);
+    public static void subsets(String s, String curr) {
 
-		}
-	}
+        if (s.length() == 0) {
+            System.out.println(curr);
+            return;
+        }
+
+        subsets(s.substring(1), curr);
+        subsets(s.substring(1), curr + s.charAt(0));
+    }
+
+    public static void main(String[] args) throws IOException {
+        Scanner s = new Scanner(System.in);
+        iterativeSubsets("abc");
+    }
 
 }
