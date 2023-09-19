@@ -1,59 +1,38 @@
 package Recursion.kunal.subsets;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.*;
 
 public class Subset {
 
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	public static List<List<Integer>> subsetsWithDup(int[] nums) {
+		Arrays.sort(nums);
+		HashSet<List<Integer>> ans = subsetSum(nums, new ArrayList<Integer>(), 0);
+		List<List<Integer>> fans =   new ArrayList<List<Integer>>();
+		fans.addAll(ans);
+		return fans;
 
-	public static int nextInt() throws IOException {
-		return Integer.parseInt(br.readLine());
 	}
 
-	public static long nextLong() throws IOException {
-		return Long.parseLong(br.readLine());
-	}
-
-	public static String next() throws IOException {
-		return br.readLine();
-	}
-
-	public static int[] nextArr() throws IOException {
-		String elements[] = br.readLine().split(" ");
-		int arr[] = new int[elements.length];
-		for (int j = 0; j < elements.length; j++)
-			arr[j] = Integer.parseInt(elements[j]);
-		return arr;
-	}
-
-	public static void printArr(int arr[]) {
-		for (int i = 0; i < arr.length; i++)
-			System.out.println(arr[i]);
-	}
-
-	public static void permutation(String s, String curr, int i) {
-
-		if (i >= s.length()) {
-			System.out.println(curr);
-			return;
+	public static HashSet<List<Integer>> subsetSum(int[]arr, List<Integer> res, int i) {
+		if (i == arr.length) {
+			HashSet<List<Integer>> ans = new HashSet<List<Integer>>();
+			ans.add(res);
+			return ans;
 		}
+		HashSet<List<Integer>> fans = new HashSet<List<Integer>>();
+		List<Integer> inc = new ArrayList<Integer>(res);
+		inc.add(arr[i]);
+		List<Integer> exc = new ArrayList<Integer>(res);
 
-		permutation(s, curr, i + 1);
-		permutation(s, curr + s.charAt(i), i + 1);
+		HashSet<List<Integer>> lans = subsetSum(arr, inc, i + 1);
+		HashSet<List<Integer>> rans = subsetSum(arr, exc, i + 1);
+		fans.addAll(lans);
+		fans.addAll(rans);
+		return fans;
 	}
 
-	public static void main(String[] args) throws IOException {
-
-		int T = 1;
-		T = nextInt();
-		while (T-- > 0) {
-
-			String s = next();
-			permutation(s, "", 0);
-
-		}
+	public static void main(String[] args) {
+		int []nums = {1,3,1};
+		subsetsWithDup(nums);
 	}
 
 }

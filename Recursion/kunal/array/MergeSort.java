@@ -17,7 +17,7 @@ public class MergeSort {
             else if (arr1[i] > arr2[j])
                 arr[k++] = arr2[j++];
             else
-                arr[k++] = arr1[i++]; // since both i and j are equal we can also write arr[k] = arr2[j]
+                arr[k++] = arr1[i++]; // since both i and j are equal we can also write arr[k++] = arr2[j++]
         }
 
         while (i < arr1.length)
@@ -31,6 +31,7 @@ public class MergeSort {
 
 
     public static int[] mergeInPlace(int[] arr, int low, int mid, int high) {
+        //not checked yet
         int arr2[] = new int[high - low];
         int i = low, j = mid + 1, k = 0;
 
